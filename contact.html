@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Mugilraj K | Graphic Designer</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="home.html" class="logo">MK</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html">Work</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <h1>Get In Touch</h1>
+        <p class="contact-subtitle">Have a project in mind? Let's work together</p>
+
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="info-item">
+                    <h3>Email</h3>
+                    <a href="mailto:mugilk1911@gmail.com">mugilk1911@gmail.com</a>
+                </div>
+                <div class="info-item">
+                    <h3>Phone</h3>
+                    <a href="tel:+919659128264">+91 9659 128264</a>
+                    <p style="font-size: 0.9rem; color: #999; margin-top: 0.5rem;">WhatsApp available</p>
+                </div>
+                <div class="info-item">
+                    <h3>Location</h3>
+                    <p>Tiruchirapalli, Tamil Nadu, India</p>
+                </div>
+                <div class="info-item">
+                    <h3>Availability</h3>
+                    <p>Available for freelance projects</p>
+                    <p>Response time: 24-48 hours</p>
+                </div>
+                <div class="info-item">
+                    <h3>Follow</h3>
+                    <div style="display: flex; gap: 1rem; margin-top: 0.5rem;">
+                        <a href="#" style="color: var(--accent); text-decoration: none; font-weight: 600;">Instagram</a>
+                        <a href="#" style="color: var(--accent); text-decoration: none; font-weight: 600;">Behance</a>
+                        <a href="#" style="color: var(--accent); text-decoration: none; font-weight: 600;">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" name="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="subject" name="subject" placeholder="Subject">
+                </div>
+                <div class="form-group">
+                    <input type="text" id="service" name="service" placeholder="Project Type (e.g., Branding, Print Design)">
+                </div>
+                <div class="form-group">
+                    <textarea id="message" name="message" placeholder="Tell me about your project..." rows="6" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+                <div id="form-message" class="form-message"></div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Mugilraj K. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#">Instagram</a>
+                <a href="#">Behance</a>
+                <a href="#">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

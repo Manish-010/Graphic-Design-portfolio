@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Design - Mugilraj K</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .project-hero-video {
+            position: relative;
+            width: 100%;
+            height: 70vh;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+
+        .hero-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(10, 14, 39, 0.7) 0%, rgba(10, 14, 39, 0.3) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .video-text {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .video-text h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--neon-green), var(--neon-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .video-text p {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+        }
+
+        .project-details {
+            padding: 4rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            border-bottom: 1px solid rgba(0, 255, 65, 0.2);
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .detail-item h4 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--neon-pink);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .detail-item p {
+            color: var(--text-secondary);
+        }
+
+        .project-description {
+            padding: 3rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            border-bottom: 1px solid rgba(0, 255, 65, 0.2);
+        }
+
+        .project-description h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--neon-green);
+        }
+
+        .project-description p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        .carousel-section {
+            padding: 6rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .carousel-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--neon-green);
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            background: rgba(26, 31, 58, 0.5);
+            border-radius: 8px;
+            overflow: hidden;
+            aspect-ratio: 16/9;
+            margin-bottom: 3rem;
+            border: 1px solid rgba(0, 255, 65, 0.2);
+        }
+
+        .carousel-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+        }
+
+        .carousel-image.active {
+            display: block;
+        }
+
+        .carousel-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .carousel-dot.active {
+            background: var(--neon-green);
+            box-shadow: 0 0 10px var(--neon-green);
+            transform: scale(1.2);
+        }
+
+        .carousel-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 255, 65, 0.3);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+        }
+
+        .carousel-nav-btn:hover {
+            background: rgba(0, 255, 65, 0.6);
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 0 20px var(--neon-green);
+        }
+
+        .carousel-prev {
+            left: 20px;
+        }
+
+        .carousel-next {
+            right: 20px;
+        }
+
+        .gallery-section {
+            padding: 3rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .gallery-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--neon-green);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1/1;
+            overflow: hidden;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 255, 65, 0.2);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03) translateY(-5px);
+            box-shadow: 0 0 30px rgba(0, 255, 65, 0.3);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .video-showcase {
+            padding: 4rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .video-showcase h3 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--neon-green);
+        }
+
+        .video-container {
+            width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 255, 65, 0.2);
+            background: #000;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: auto;
+            display: block;
+            max-height: 70vh;
+        }
+
+        .project-navigation {
+            padding: 4rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(0, 255, 65, 0.2);
+        }
+
+        .project-navigation a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 600;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 255, 65, 0.2);
+        }
+
+        .project-navigation a:hover {
+            color: var(--neon-green);
+            border-color: var(--neon-green);
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">MK</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#portfolio">Work</a></li>
+                <li><a href="index.html#skills">Skills</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Video -->
+    <section class="project-hero-video">
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="images/watch video.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay">
+            <div class="video-text">
+                <h1>Product Design</h1>
+                <p>Premium packaging and visual branding design</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Details -->
+    <section class="project-details">
+        <div class="details-grid">
+            <div class="detail-item">
+                <h4>Category</h4>
+                <p>Product Design</p>
+            </div>
+            <div class="detail-item">
+                <h4>Services</h4>
+                <p>Packaging Design, Product Branding, Visual Concept</p>
+            </div>
+            <div class="detail-item">
+                <h4>Tools</h4>
+                <p>Photoshop, Illustrator, 3D Visualization</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Description -->
+    <section class="project-description">
+        <h3>Overview</h3>
+        <p>
+            Designed premium product packaging and branding that combines functionality with aesthetic excellence. 
+            The solution stands out on retail shelves while maintaining brand consistency. Through careful consideration 
+            of form, color, and typography, every element communicates quality and sophistication.
+        </p>
+    </section>
+
+    <!-- Product Carousel -->
+    <section class="carousel-section">
+        <h3>Product Showcase</h3>
+        <div class="carousel-container">
+            <img src="images/blackcup.jpg" alt="Product 1" class="carousel-image active">
+            <img src="images/copycup.jpg" alt="Product 2" class="carousel-image">
+            <img src="images/design1.jfif" alt="Design 1" class="carousel-image">
+            <img src="images/design2.jfif" alt="Design 2" class="carousel-image">
+            
+            <button class="carousel-nav-btn carousel-prev" onclick="prevSlide()">❮</button>
+            <button class="carousel-nav-btn carousel-next" onclick="nextSlide()">❯</button>
+            
+            <div class="carousel-controls">
+                <div class="carousel-dot active" onclick="currentSlide(0)"></div>
+                <div class="carousel-dot" onclick="currentSlide(1)"></div>
+                <div class="carousel-dot" onclick="currentSlide(2)"></div>
+                <div class="carousel-dot" onclick="currentSlide(3)"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Design Concepts Gallery -->
+    <section class="gallery-section">
+        <h3>Design Concepts & Details</h3>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="images/home1.png" alt="Concept 1">
+            </div>
+            <div class="gallery-item">
+                <img src="images/OIP.jpeg" alt="Concept 2">
+            </div>
+            <div class="gallery-item">
+                <img src="images/Book.jpeg" alt="Concept 3">
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Showcase -->
+    <section class="video-showcase">
+        <h3>Design Process Video</h3>
+        <div class="video-container">
+            <video autoplay muted loop playsinline controls>
+                <source src="images/watch video.mp4" type="video/mp4">
+            </video>
+        </div>
+    </section>
+
+    <!-- Project Navigation -->
+    <section class="project-navigation">
+        <a href="index.html#portfolio">← Back to Portfolio</a>
+        <a href="project-3.html">Next Project →</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Mugilraj K. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#">Instagram</a>
+                <a href="#">Behance</a>
+                <a href="#">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
